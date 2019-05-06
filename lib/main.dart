@@ -1,110 +1,80 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(LoginApp());
-
-class LoginApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Login UI',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(title: 'Login Conex'),
-    );
-  }
+void main() {
+  runApp(MaterialApp(
+    home: MyApp(),
+    theme: themeData,
+  ));
 }
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-  final String title;
+final ThemeData themeData = ThemeData(
+  canvasColor: Colors.lightGreenAccent,
+  accentColor: Colors.redAccent,
+);
+
+class MyApp extends StatelessWidget {
   @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-
-  @override
-  Widget build(BuildContext context) {
-    final emailField = TextField(
-      obscureText: false,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Email",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-    );
-    final passwordField = TextField(
-      obscureText: true,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Password",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-    );
-    final loginButon = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff01A0C7),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {},
-        child: Text("Login",
-            textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
-      ),
-    );
-    final lostPassword = Material(
-      color: Colors.white,
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        onPressed: () {},
-        child: Text("Recuperar Contraseña",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                  fontSize: 18.0, color: Colors.lightBlue, fontFamily: "Montserrat" )),
-      ),
-    );
-
+  Widget build(BuildContext ctx) {
     return Scaffold(
       body: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(36.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    height: 155.0,
-                    child: Image.asset(
-                      "assets/logo.png",
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  SizedBox(height: 45.0),
-                  emailField,
-                  SizedBox(height: 25.0),
-                  passwordField,
-                  SizedBox(height: 35.0),
-                  loginButon,
-                  SizedBox(height: 15.0),
-                  lostPassword,
-                  SizedBox(height: 5.0),
-                ],
-              ),
-            ),
-          ),
+        child: FlatButton(
+          onPressed: (){
+            Navigator.push(ctx, PageTwo());
+          },
+          child: Text("Go to Page Two"),
         ),
       ),
     );
   }
+}
+
+class PageTwo extends MaterialPageRoute<Null> {
+  PageTwo() : super(builder: (BuildContext ctx) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(ctx).canvasColor,
+        elevation: 1.0,
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.push(
+              ctx,
+              PageThree()
+            );
+          },
+          child: Text("Go to Page Three"),
+        ),
+      ),
+    );
+  });
+}
+
+class PageThree extends MaterialPageRoute<Null> {
+  PageThree() : super(builder: (BuildContext ctx) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Last Page!"),
+        backgroundColor: Theme.of(ctx).accentColor,
+        elevation: 2.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.close),
+            onPressed: (){
+              Navigator.pop(ctx);
+            },
+          )
+        ],
+      ),
+      body: Center(
+        child: MaterialButton(
+          onPressed: (){
+            Navigator.popUntil(ctx, ModalRoute.withName(Navigator.defaultRouteName));
+          },
+          child: Text("Go Home!"),
+        ),
+      ),
+    );
+  });
+
 }
