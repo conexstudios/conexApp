@@ -6,7 +6,7 @@ void main(){
       title: "Chat",
       home: Scaffold(
         appBar: AppBar(
-          title: Text("FriendlyChat"),
+          title: Text("Chatconex"),
         ),
       ),
     ),
