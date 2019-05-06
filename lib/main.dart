@@ -67,14 +67,13 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {},
         child: Text("Recuperar Contraseña",
             textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.lightBlue, fontWeight: FontWeight.bold)),
+            style: TextStyle(
+                  fontSize: 18.0, color: Colors.lightBlue, fontFamily: "Montserrat" )),
       ),
     );
 
     return Scaffold(
-      body: 
-      Center(
+      body: Center(
         child: SingleChildScrollView(
           child: Container(
             color: Colors.white,
@@ -100,7 +99,6 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 15.0),
                   lostPassword,
                   SizedBox(height: 5.0),
-
                 ],
               ),
             ),
