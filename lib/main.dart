@@ -19,6 +19,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightBlue,
         fontFamily: 'Montserrat',
       ),
-      home: LoginApp());
+      home: HomePage());
   }
 }
