@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login_ui/home_page.dart';
 
 void main() => runApp(LoginApp());
 
@@ -67,7 +68,9 @@ class _PageLoginState extends State<PageLogin> {
       color: Colors.white,
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed(HomePage.tag);
+        },
         child: Text("Recuperar Contraseña",
             textAlign: TextAlign.center,
             style: TextStyle(
