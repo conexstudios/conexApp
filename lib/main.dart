@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'home_page.dart';
 import 'lost_password.dart';
+import 'splash_screen.dart';
 
 void main() => runApp(MyApp());
   final routes = <String, WidgetBuilder>{
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightBlue,
         fontFamily: 'Montserrat',
       ),
-      home: PageLogin(),
+      home: SplahScreen(),
       routes: routes,
       );
   }
