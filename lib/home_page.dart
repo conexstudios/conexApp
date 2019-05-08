@@ -33,7 +33,8 @@ class HomePage extends StatelessWidget {
       ),
     );
 
-    final body = Container(
+    final body = SingleChildScrollView(
+        child: Container(
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.all(28.0),
       decoration: BoxDecoration(
@@ -45,7 +46,7 @@ class HomePage extends StatelessWidget {
       child: Column(
         children: <Widget>[yotman, welcome, lorem],
       ),
-    );
+    ));
 
     return Scaffold(
       body: body,
