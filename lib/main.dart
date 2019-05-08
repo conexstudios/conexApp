@@ -4,7 +4,7 @@ import 'home_page.dart';
 
 void main() => runApp(MyApp());
   final routes = <String, WidgetBuilder>{
-    LoginApp.tag: (context) => LoginApp(),
+    PageLogin.tag: (context) => PageLogin(),
     HomePage.tag: (context) => HomePage(),
   };
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightBlue,
         fontFamily: 'Montserrat',
       ),
-      home: LoginApp(),
+      home: PageLogin(),
       routes: routes,
       );
   }

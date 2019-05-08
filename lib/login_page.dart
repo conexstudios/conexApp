@@ -1,24 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login_ui/home_page.dart';
-
-void main() => runApp(LoginApp());
-
-class LoginApp extends StatelessWidget {
-  static String tag = "login-page";
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Login UI',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: PageLogin(title: 'Login Conex'),
-    );
-  }
-}
+import 'package:mysql1/mysql1.dart';
 
 class PageLogin extends StatefulWidget {
+  static String tag = "login-page";
   PageLogin({Key key, this.title}) : super(key: key);
   final String title;
   @override
@@ -56,7 +41,7 @@ class _PageLoginState extends State<PageLogin> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          
+          Navigator.of(context).pushNamed(HomePage.tag);
         },
         child: Text("Login",
             textAlign: TextAlign.center,
@@ -68,9 +53,7 @@ class _PageLoginState extends State<PageLogin> {
       color: Colors.white,
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
-        onPressed: () {
-          Navigator.of(context).pushNamed(HomePage.tag);
-        },
+        onPressed: () {},
         child: Text("Recuperar Contraseña",
             textAlign: TextAlign.center,
             style: TextStyle(
