@@ -98,6 +98,8 @@ class _PageLoginState extends State<PageLogin> {
           ),
         ),
       ),
+      backgroundColor: Colors.white,
+      
     );
   }
 }
