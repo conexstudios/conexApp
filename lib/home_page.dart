@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login_ui/login_page.dart';
+import 'package:flutter_login_ui/lost_password.dart';
 
 class HomePage extends StatelessWidget {
   static String tag = 'home-page';
@@ -44,8 +46,62 @@ class HomePage extends StatelessWidget {
     );
 
     return Scaffold(
-
       body: body,
+      appBar: AppBar(
+        title: Text('AppConex'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Material(
+              color: Colors.transparent, 
+              child: Text('Yotman'),
+              textStyle: TextStyle(fontSize: 20.0, fontFamily: 'Montserrat' ),
+              ),
+              accountEmail: Material(
+              color: Colors.transparent, 
+              child: Text('yotmancito@gmail.com'),
+              textStyle: TextStyle(fontSize: 20.0, fontFamily: 'Montserrat' ),
+              ),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/negro.png'),
+              ),
+            ),
+            ListTile(
+            title: Text('Login', style: TextStyle(
+              fontSize: 20.00
+            ) ,
+            ),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.push(context, 
+              MaterialPageRoute(
+                builder: (BuildContext context) => PageLogin()));
+            },
+            ),
+            Divider(
+              color: Colors.blueAccent,
+              height: 5.0,
+            ),
+             ListTile(
+            title: Text('Recuperar Contraseña', style: TextStyle(
+              fontSize: 20.00
+            ) ,),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.push(context, 
+              MaterialPageRoute(
+                builder: (BuildContext context) => LostPage()));
+            },
+            ),
+            Divider(
+              color: Colors.blueAccent,
+              height: 5.0,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
