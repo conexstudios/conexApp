@@ -5,10 +5,10 @@ import 'package:mysql1/mysql1.dart';
 Future main() async {
   // Open a connection (testdb should already exist)
   final conn = await MySqlConnection.connect(new ConnectionSettings(
-        host: '192.168.1.80', 
-        port: 3306, user: 'root',
-        password: 'sofia2015', 
-        db: 'sofia2015'
+        host: 'your_host',
+        port: 3306, user: 'your_user', 
+        password: 'your_password', 
+        db: 'your_db'
       )
     );
 
