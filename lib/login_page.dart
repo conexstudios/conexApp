@@ -1,7 +1,6 @@
+import 'package:Conexstudios/home_page.dart';
+import 'package:Conexstudios/lost_password.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_login_ui/home_page.dart';
-import 'package:flutter_login_ui/lost_password.dart';
-import 'package:mysql1/mysql1.dart';
 
 class PageLogin extends StatefulWidget {
   static String tag = "login-page";

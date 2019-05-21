@@ -1,5 +1,5 @@
+import 'package:Conexstudios/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_login_ui/login_page.dart';
 
 class LostPage extends StatefulWidget {
   static String tag = "lost-page";

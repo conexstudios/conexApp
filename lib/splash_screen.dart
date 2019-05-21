@@ -1,6 +1,6 @@
+import 'package:Conexstudios/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:flutter_login_ui/login_page.dart';
 class SplahScreen extends StatefulWidget {
   @override
   _MyAppState createState() =>  _MyAppState();
