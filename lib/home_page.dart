@@ -44,13 +44,11 @@ class HomePage extends StatelessWidget {
       ),
     ),
     );
-
-    return Scaffold(
-      body: body,
-      appBar: AppBar(
+    
+    final appBar = AppBar(
         title: Text('AppConex'),
-      ),
-      drawer: Drawer(
+      );
+      final drawer = Drawer(
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
@@ -130,7 +128,11 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      );
+    return Scaffold(
+      body: body,
+      appBar: appBar,
+      drawer: drawer,
     );
   }
 }
