@@ -44,21 +44,18 @@ class HomePage extends StatelessWidget {
       ),
     ),
     );
-
-    return Scaffold(
-      body: body,
-      appBar: AppBar(
+    
+    final appBar = AppBar(
         title: Text('AppConex'),
-      ),
-      drawer: Drawer(
+      );
+      final drawer = Drawer(
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
               accountName: Material(
               color: Colors.transparent, 
               child: Text('Yotman'),
-              textStyle: TextStyle(fontSize: 20.0, fontFamily: 'Montserrat' ),
-              ),
+              textStyle: TextStyle(fontSize: 20.0, fontFamily: 'Montserrat' ),),
               accountEmail: Material(
               color: Colors.transparent, 
               child: Text('yotmancito@gmail.com'),
@@ -69,7 +66,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-            title: Text('Login', style: TextStyle(
+            title: Text('Dashboard', style: TextStyle(
               fontSize: 20.00
             ) ,
             ),
@@ -84,8 +81,23 @@ class HomePage extends StatelessWidget {
               color: Colors.blueAccent,
               height: 5.0,
             ),
+            ListTile(
+            title: Text('Evaluaciones', style: TextStyle(
+              fontSize: 20.00
+            ) ,),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.push(context, 
+              MaterialPageRoute(
+                builder: (BuildContext context) => LostPage()));
+            },
+            ),
+             Divider(
+              color: Colors.blueAccent,
+              height: 5.0,
+            ),
              ListTile(
-            title: Text('Recuperar Contraseña', style: TextStyle(
+            title: Text('Mensajes', style: TextStyle(
               fontSize: 20.00
             ) ,),
             onTap: () {
@@ -99,9 +111,28 @@ class HomePage extends StatelessWidget {
               color: Colors.blueAccent,
               height: 5.0,
             ),
+             ListTile(
+            title: Text('Tickets', style: TextStyle(
+              fontSize: 20.00
+            ) ,),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.push(context, 
+              MaterialPageRoute(
+                builder: (BuildContext context) => LostPage()));
+            },
+            ),
+             Divider(
+              color: Colors.blueAccent,
+              height: 5.0,
+            ),
           ],
         ),
-      ),
+      );
+    return Scaffold(
+      body: body,
+      appBar: appBar,
+      drawer: drawer,
     );
   }
 }
