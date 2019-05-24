@@ -13,19 +13,22 @@ class PageLogin extends StatefulWidget {
 }
 
 class _PageLoginState extends State<PageLogin> {
-
   // Assing Listener to Text fields
   TextEditingController user = new TextEditingController();
   TextEditingController password = new TextEditingController();
 
   Future<List> _login() async {
-  final response = await http.post('https://www.demoscs4.net', body{
-    "USUARIO_ID": user.text,
-    "USU_PASSWORD1": password.text
-  });
+    try {
+      final response = await http.post(
+          'https://www.demoscs4.net/app_mobile/backend/login.php',
+          body: {'USUARIO_ID': 'user.text', 'USU_PASSWORD1': 'password.text'});
 
-  print(response.body);
-}
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+    } catch (e) {
+      print(e);
+    }
+  }
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   @override
