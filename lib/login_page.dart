@@ -1,6 +1,8 @@
-import 'package:Conexstudios/home_page.dart';
+import 'dart:async';
+// import 'package:Conexstudios/home_page.dart';
 import 'package:Conexstudios/lost_password.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class PageLogin extends StatefulWidget {
   static String tag = "login-page";
@@ -11,12 +13,25 @@ class PageLogin extends StatefulWidget {
 }
 
 class _PageLoginState extends State<PageLogin> {
+
+  // Assing Listener to Text fields
+  TextEditingController user = new TextEditingController();
+  TextEditingController password = new TextEditingController();
+
+  Future<List> _login() async {
+  final response = await http.post('https://www.demoscs4.net', body{
+    "USUARIO_ID": user.text,
+    "USU_PASSWORD1": password.text
+  });
+
+  print(response.body);
+}
+
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-
-
   @override
   Widget build(BuildContext context) {
     final emailField = TextField(
+      controller: user,
       obscureText: false,
       style: style,
       decoration: InputDecoration(
@@ -26,6 +41,7 @@ class _PageLoginState extends State<PageLogin> {
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
     final passwordField = TextField(
+      controller: password,
       obscureText: true,
       style: style,
       decoration: InputDecoration(
@@ -42,7 +58,8 @@ class _PageLoginState extends State<PageLogin> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          Navigator.of(context).pushNamed(HomePage.tag);
+          _login();
+          //Navigator.of(context).pushNamed(HomePage.tag);
         },
         child: Text("Login",
             textAlign: TextAlign.center,
@@ -60,7 +77,9 @@ class _PageLoginState extends State<PageLogin> {
         child: Text("Recuperar Contraseña",
             textAlign: TextAlign.center,
             style: TextStyle(
-                  fontSize: 18.0, color: Colors.lightBlue, fontFamily: "Montserrat" )),
+                fontSize: 18.0,
+                color: Colors.lightBlue,
+                fontFamily: "Montserrat")),
       ),
     );
 
@@ -98,7 +117,6 @@ class _PageLoginState extends State<PageLogin> {
         ),
       ),
       backgroundColor: Colors.white,
-      
     );
   }
 }
