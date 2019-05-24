@@ -1,6 +1,6 @@
+import 'package:Conexstudios/login_page.dart';
+import 'package:Conexstudios/lost_password.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_login_ui/login_page.dart';
-import 'package:flutter_login_ui/lost_password.dart';
 
 class HomePage extends StatelessWidget {
   static String tag = 'home-page';
