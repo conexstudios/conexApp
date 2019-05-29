@@ -21,7 +21,7 @@ class _PageLoginState extends State<PageLogin> {
     try {
       final response = await http.post(
           'https://www.demoscs4.net/app_mobile/backend/login.php',
-          body: {'USUARIO_ID': 'user.text', 'USU_PASSWORD1': 'password.text'});
+          body: {'USUARIO_ID': user.text, 'USU_PASSWORD1': password.text});
 
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');

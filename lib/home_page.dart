@@ -1,5 +1,6 @@
 import 'package:Conexstudios/login_page.dart';
 import 'package:Conexstudios/lost_password.dart';
+import 'package:Conexstudios/mensajes/home_page_message.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -104,7 +105,7 @@ class HomePage extends StatelessWidget {
               Navigator.of(context).pop();
               Navigator.push(context, 
               MaterialPageRoute(
-                builder: (BuildContext context) => LostPage()));
+                builder: (BuildContext context) => HomePageMessage()));
             },
             ),
             Divider(
