@@ -5,17 +5,6 @@ import 'package:Conexstudios/lost_password.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-// overrides http self-signed certificates
-
-class AppHttpOverrides extends HttpOverrides{
-  @override
-  HttpClient createHttpClient(SecurityContext securityContext){
-    return HttpClient()
-    ..badCertificateCallback =(X509Certificate cert, String host, int port) => true;
-  }
-}
-
-
 class PageLogin extends StatefulWidget {
   static String tag = "login-page";
   PageLogin({Key key, this.title}) : super(key: key);
@@ -24,22 +13,31 @@ class PageLogin extends StatefulWidget {
   _PageLoginState createState() => _PageLoginState();
 }
 
+// overrides http self-signed certificates
+
+class AppHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext securityContext) {
+    return HttpClient()
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
 
 class _PageLoginState extends State<PageLogin> {
   // Assing Listener to Text fields
-  TextEditingController user =  TextEditingController();
+  TextEditingController user = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  Future<List> _login() async {
+  Future<String> _login() async {
     try {
       HttpOverrides.global = AppHttpOverrides();
-      await http.post(
-          'https://www.demoscs4.net/app_mobile/backend/login.php',
+      await http.post('https://www.demoscs4.net/app_mobile/backend/login.php',
           body: {
-          'USUARIO_ID':  user.text, 
-          'USU_PASSWORD1':  password.text
-        }).then((response) {
-        return print('Response status: ${response.statusCode}, Response body: ${response.body}');
+            'USUARIO_ID': user.text,
+            'USU_PASSWORD1': password.text
+          }).then((response) {
+          return print('Response status: ${response.statusCode}, Response body: ${response.body}');
       });
     } catch (e) {
       print(e.toString());
