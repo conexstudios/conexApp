@@ -1,8 +1,20 @@
 import 'dart:async';
+import 'dart:io';
 // import 'package:Conexstudios/home_page.dart';
 import 'package:Conexstudios/lost_password.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+// overrides http self-signed certificates
+
+class AppHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient(SecurityContext securityContext){
+    return HttpClient()
+    ..badCertificateCallback =(X509Certificate cert, String host, int port) => true;
+  }
+}
+
 
 class PageLogin extends StatefulWidget {
   static String tag = "login-page";
@@ -12,21 +24,25 @@ class PageLogin extends StatefulWidget {
   _PageLoginState createState() => _PageLoginState();
 }
 
+
 class _PageLoginState extends State<PageLogin> {
   // Assing Listener to Text fields
-  TextEditingController user = new TextEditingController();
-  TextEditingController password = new TextEditingController();
+  TextEditingController user =  TextEditingController();
+  TextEditingController password = TextEditingController();
 
   Future<List> _login() async {
     try {
-      final response = await http.post(
+      HttpOverrides.global = AppHttpOverrides();
+      await http.post(
           'https://www.demoscs4.net/app_mobile/backend/login.php',
-          body: {'USUARIO_ID': user.text, 'USU_PASSWORD1': password.text});
-
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
+          body: {
+          'USUARIO_ID':  user.text, 
+          'USU_PASSWORD1':  password.text
+        }).then((response) {
+        return print('Response status: ${response.statusCode}, Response body: ${response.body}');
+      });
     } catch (e) {
-      print(e);
+      print(e.toString());
     }
   }
 
