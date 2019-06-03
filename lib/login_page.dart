@@ -34,10 +34,10 @@ class _PageLoginState extends State<PageLogin> {
     try {
       HttpOverrides.global = AppHttpOverrides();
       await http.post(
-          'https://www.demoscs4.net/app_mobile/backend/login.php',
+          'url',
           body: {
-          'USUARIO_ID':  user.text, 
-          'USU_PASSWORD1':  password.text
+          'user':  user.text, 
+          'password':  password.text
         }).then((response) {
         return print('Response status: ${response.statusCode}, Response body: ${response.body}');
       });
