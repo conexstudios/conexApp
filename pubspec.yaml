@@ -15,10 +15,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  
-  #MySql Conector driver
-  mysql1: ^0.17.0
-  
+
   #Splash Screen
   splashscreen: ^1.2.0
 
